@@ -1,9 +1,13 @@
-import operator
-import json
+# 1 : imports of python lib
 import logging
 from odoo import http
 from odoo.http import request
-# from odoo.addons.web.controllers.main import content_disposition
+
+# 2 :  imports of odoo
+
+# 3 :  imports of odoo modules
+
+# 4 :  imports from custom modules
 
 
 _logger = logging.getLogger(__name__)

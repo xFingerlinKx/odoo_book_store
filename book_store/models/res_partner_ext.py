@@ -94,6 +94,7 @@ class ResPartner(models.Model):
             partners_ids = [row[0] for row in self.env.cr.fetchall()]
 
             if not partners_ids:
+                # 'title' attr added to avoid problems - inserting string in this field
                 partner = self.create({'name': name, 'partner_type': partner_type, 'title': 0})
                 partners_objects.append(partner)
                 continue

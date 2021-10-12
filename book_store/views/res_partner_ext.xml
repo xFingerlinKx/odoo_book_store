@@ -2,6 +2,7 @@
 <odoo>
     <data>
 
+        <!-- res.partner extension for form view -->
         <record id="view_res_partner_form_inherit_book_store" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.partner.book.store</field>
         <field name="model">res.partner</field>
@@ -36,6 +37,7 @@
             </field>
         </record>
 
+        <!-- res.partner extension for tree view -->
         <record id="res_partner_inherit_book_store_tree_view" model="ir.ui.view">
             <field name="name">res.partner.inherit.book.store.tree.view</field>
             <field name="model">res.partner</field>

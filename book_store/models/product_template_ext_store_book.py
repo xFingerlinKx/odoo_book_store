@@ -74,6 +74,7 @@ class ProductTemplateExtBook(models.Model):
         compute='_compute_reference_field',
         store=True,
     )
+    """ Computed field with basic book information """
 
     # Compute and search fields, in the same order of fields declaration
     # ------------------------------------------------------------------------------------------------------------------
@@ -94,9 +95,6 @@ class ProductTemplateExtBook(models.Model):
 
     @api.constrains('isbn')
     def constrains_is_isbn_unique(self):
-        """
-        ISBN must be unique.
-        """
         for book in self:
             is_isbn_not_unique = self.env['product.template'].search_count([
                 ('isbn', '=', book.isbn),
@@ -107,9 +105,6 @@ class ProductTemplateExtBook(models.Model):
 
     @api.constrains('isbn')
     def constrains_is_isbn_valid(self):
-        """
-        Checks for ISBN-10 or ISBN-13 format.
-        """""
         for book in self:
             check_is_isbn_valid(book.isbn)
 
@@ -136,8 +131,14 @@ class ProductTemplateExtBook(models.Model):
 
     @api.model
     def _create_new_store_book_from_data(self, data):
+        """
+        Create new book with data.
+
+        :param data: {dict} data values to create new book record
+        :return: {product.template} new book
+        """
         if not data:
-            raise ValidationError(_('Something wrong with book data!\n Impossible to add book!'))
+            raise ValidationError(_(constants.IMPOSSIBLE_TO_CREATE_NEW_BOOK_MSG))
 
         book_vals_dict = {
             'isbn': data.get('default_isbn'),

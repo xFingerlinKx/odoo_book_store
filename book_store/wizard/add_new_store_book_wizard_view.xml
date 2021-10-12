@@ -2,6 +2,7 @@
 <odoo>
     <data>
 
+        <!-- window for wizard first step - fill ISBN number -->
         <record id="add_new_store_book_wizard_step_1_view" model="ir.ui.view">
             <field name="name">Add a New Book</field>
             <field name="model">add_new.store_book.wizard</field>
@@ -18,6 +19,7 @@
             </field>
         </record>
 
+        <!-- window for wizard second step - get book data and add new book -->
         <record id="add_new_store_book_wizard_step_2_view" model="ir.ui.view">
             <field name="name">Add a New Book</field>
             <field name="model">add_new.store_book.wizard</field>
@@ -49,6 +51,7 @@
             </field>
         </record>
 
+        <!-- action for wizard first step - fill ISBN number -->
         <record model="ir.actions.act_window" id="action_wizard_add_new_book">
             <field name="name">Add New Book</field>
             <field name="res_model">add_new.store_book.wizard</field>

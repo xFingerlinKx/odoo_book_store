@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <odoo>
+
+    <!-- template for all books in the store -->
     <template id="book_store.books_page">
         <t t-call="website.layout">
             <div class="col-lg-12 row">
@@ -25,6 +27,7 @@
         </t>
     </template>
 
+    <!-- template for book details form -->
     <template id="book_store.book_details">
         <t t-call="website.layout">
             <div class="col-md-4" style="margin: 10px">
