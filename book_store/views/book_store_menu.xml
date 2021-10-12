@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="book_store_menu"
+              name="Book Store"
+    />
+
+    <record model="ir.actions.act_window" id="action_book_store">
+        <field name="name">Books</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_book"
+              name="Books"
+              parent="book_store_menu"
+              action="action_book_store"
+    />
+
+    <record model="ir.actions.act_window" id="action_book_store_authors">
+        <field name="name">Authors</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('partner_type','=','is_author')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="book_store_authors"
+              name="Authors"
+              parent="book_store_menu"
+              action="action_book_store_authors"
+    />
+
+    <record model="ir.actions.act_window" id="action_book_store_publishers">
+        <field name="name">Publishers</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('partner_type','=','is_publisher')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="book_store_publishers"
+              name="Publishers"
+              parent="book_store_menu"
+              action="action_book_store_publishers"
+    />
+
+    <record model="ir.actions.act_url" id="action_open_books_page">
+        <field name="name">Open Books Page</field>
+        <field name="url">http://localhost:8069/books</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_books_page"
+              parent="book_store_menu"
+              action="action_open_books_page"
+    />
+
+</odoo>

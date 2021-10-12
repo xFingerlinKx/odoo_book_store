@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- product.template extension for book view form -->
+        <record id="product_template_only_form_ext_book_view" model="ir.ui.view">
+            <field name="name">product.template.product.ext.book.form</field>
+            <field name="model">product.template</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="8"/>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[hasclass('oe_title')]/label[@for='name']" position="attributes">
+                    <attribute name="string">Book Name</attribute>
+                </xpath>
+
+                <xpath expr="//div[hasclass('oe_title')]/h1/div[hasclass('d-flex')]/field[@name='name']" position="attributes">
+                    <attribute name="placeholder">e.g. King Arthur</attribute>
+                </xpath>
+
+                <xpath expr='//div[@name="options"]' position='after'>
+                    <group>
+                        <group>
+                            <field name="isbn"/>
+                            <field name="page_qty"/>
+                            <field name="date_published"/>
+                        </group>
+
+                        <group>
+                            <field name="publisher_ids"
+                                   domain="[('partner_type','=','is_publisher')]"
+                                   widget="many2many_tags"
+                            />
+                            <field name="author_ids"
+                                   domain="[('partner_type','=','is_author')]"
+                                   widget="many2many_tags"
+                            />
+                            <field name="reference_field"/>
+                        </group>
+                    </group>
+
+                    <group string="Book description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="product_template_etx_book_store_tree_view" model="ir.ui.view">
+            <field name="name">product.template.ext.book.store.tree.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr='//tree' position='replace'>
+                    <tree>
+                        <field name="name"/>
+                        <field name="isbn"/>
+                        <field name="author_ids" widget="many2many_tags"/>
+                        <field name="publisher_ids" widget="many2many_tags"/>
+                        <field name="date_published"/>
+                        <field name="page_qty"/>
+                        <field name="list_price"/>
+                        <field name="standard_price"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

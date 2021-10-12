@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="add_new_store_book_wizard_step_1_view" model="ir.ui.view">
+            <field name="name">Add a New Book</field>
+            <field name="model">add_new.store_book.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Add a New Book">
+                    <group>
+                        <field name="isbn"/>
+                    </group>
+                    <footer>
+                        <button string="Next" name="action_get_response_data" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="add_new_store_book_wizard_step_2_view" model="ir.ui.view">
+            <field name="name">Add a New Book</field>
+            <field name="model">add_new.store_book.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Add a New Book">
+                    <group>
+                        <group>
+                        <field name="title"/>
+                        <field name="authors"/>
+                        <field name="isbn"/>
+                        <field name="publishers"/>
+                        <field name="page_qty"/>
+                        <field name="date_published"/>
+                    </group>
+                    <group>
+                        <field name="book_cover" widget="image" options="{'preview_image': 'book_cover'}"/>
+                    </group>
+                    </group>
+                    <footer>
+                        <button string="Create New Book"
+                                name="action_create_store_book_data"
+                                type="object"
+                                class="btn-primary"
+                                confirm="Are you sure you want to add a new book with the selected data?"
+                        />
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_wizard_add_new_book">
+            <field name="name">Add New Book</field>
+            <field name="res_model">add_new.store_book.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="add_new_store_book_wizard_step_1_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_add_new_book_wizard"
+                  name="Add New Book"
+                  parent="book_store_menu"
+                  action="action_wizard_add_new_book"
+        />
+
+    </data>
+</odoo>
