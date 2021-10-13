@@ -32,7 +32,6 @@ class ResPartner(models.Model):
     partner_type = fields.Selection(
         string='Partner Type',
         selection=constants.RES_PARTNER_TYPES,
-        default=constants.RES_PARTNER_AUTHOR,
     )
     """ Partner Type - author or publisher """
 

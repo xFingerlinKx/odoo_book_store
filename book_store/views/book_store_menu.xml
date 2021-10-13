@@ -52,6 +52,7 @@
     <menuitem id="menu_books_page"
               parent="book_store_menu"
               action="action_open_books_page"
+              sequence="999"
     />
 
 </odoo>

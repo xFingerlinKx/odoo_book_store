@@ -10,7 +10,7 @@
 
     'license': "AGPL-3",
 
-    'depends': ['product'],
+    'depends': ['product', 'website'],
 
     'application': True,
 
